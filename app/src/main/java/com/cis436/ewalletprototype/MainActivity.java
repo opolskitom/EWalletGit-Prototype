@@ -14,29 +14,23 @@ import android.widget.EditText;
 
 
 public class MainActivity extends AppCompatActivity {
-    interface OnClassClickListener{
-        void onClassSelected(String option);
-    }
-    private OnClassClickListener mCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
+        Button loginBtn = findViewById(R.id.loginBtn);
+        EditText usernameTxt = findViewById(R.id.usernameEditText);
+        EditText passwordTxt = findViewById(R.id.passwordEditText);
 
-        Button loginBtn = (Button) findViewById(R.id.loginBtn);
-        EditText usernameTxt = (EditText) findViewById(R.id.usernameEditText);
-        EditText passwordTxt = (EditText) findViewById(R.id.passwordEditText);
-
-        loginBtn.setOnClickListener(new View.OnClickListener(){
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                login();
+            public void onClick(View v) {
+                Intent MenuActivity = new Intent(MainActivity.this ,MenuActivity.class);
+                startActivity(MenuActivity);
             }
         });
-    }
-    public void login() {
-        Intent goMenu = new Intent(this, MenuActivity.class);
-        startActivity(goMenu);
+
     }
 }

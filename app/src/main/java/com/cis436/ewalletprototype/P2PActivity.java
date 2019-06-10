@@ -1,5 +1,6 @@
 package com.cis436.ewalletprototype;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +14,18 @@ public class P2PActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_p2p);
 
-        findViewById(R.id.open).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.ppOpen).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openChromeCustomTabs("https://www.paypal.com/myaccount/transfer/homepage");
+            }
+        });
+
+        findViewById(R.id.manualOpen).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent P2PManualActivity = new Intent(P2PActivity.this ,P2PManualActivity.class);
+                startActivity(P2PManualActivity);
             }
         });
     }
@@ -27,4 +36,5 @@ public class P2PActivity extends AppCompatActivity {
         CustomTabsIntent intent = builder.build();
         intent.launchUrl(this, Uri.parse(url));
     }
+
 }

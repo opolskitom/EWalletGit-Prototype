@@ -32,8 +32,10 @@ public class MakePaymentActivity extends AppCompatActivity {
 
     Button btnPayNow;
     EditText edtAmount;
+    EditText edtEmail;
 
     String amount = "";
+    String payeeEmail = "";
 
     @Override
     protected void onDestroy() {
@@ -50,9 +52,9 @@ public class MakePaymentActivity extends AppCompatActivity {
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         startService(intent);
 
-
-        btnPayNow = (Button) findViewById(R.id.btnPayNow);
-        edtAmount = (EditText) findViewById(R.id.edtAmount);
+        btnPayNow = findViewById(R.id.btnPayNow);
+        edtAmount = findViewById(R.id.edtAmount);
+        edtEmail = findViewById(R.id.edtEmail);
 
         btnPayNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +66,10 @@ public class MakePaymentActivity extends AppCompatActivity {
 
     private void processPayment() {
         amount = edtAmount.getText().toString();
+        payeeEmail = edtEmail.getText().toString();
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)), "USD", "Pay David Lee", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(this, PaymentActivity.class);
+        payPalPayment.payeeEmail(payeeEmail);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
         startActivityForResult(intent, PAYPAL_REQUEST_CODE);

@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Config.GetTransactionHistoryActivity"></activity>
         <activity android:name=".MakePaymentActivity" />
+        <activity android:name=".Report.ReportActivity" />
         <activity android:name=".PaymentDetailsActivity" />
         <activity android:name=".P2PActivity" />
+        <activity android:name=".P2PManualActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

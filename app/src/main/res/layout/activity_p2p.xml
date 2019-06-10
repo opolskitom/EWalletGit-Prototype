@@ -6,12 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent = "true"
-        android:text="Launch Custom Tabs"
-        android:id="@+id/open"
-        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/ppOpen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="250dp"
+            android:text="PayPal Send Money" />
+
+
+        <Button
+            android:id="@+id/manualOpen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Manual Transfer" />
+
+    </LinearLayout>
 
 </RelativeLayout>

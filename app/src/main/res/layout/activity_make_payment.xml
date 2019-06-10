@@ -11,22 +11,29 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="200dp"
+            android:hint="Enter Receiver's E-mail" />
+
+        <EditText
             android:id="@+id/edtAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
             android:hint="Enter Amount" />
 
         <Button
             android:id="@+id/btnPayNow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="20dp"
             android:text="Pay Now" />
     </LinearLayout>

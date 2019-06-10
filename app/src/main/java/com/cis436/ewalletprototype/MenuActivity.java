@@ -3,11 +3,12 @@ package com.cis436.ewalletprototype;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
+
+import com.cis436.ewalletprototype.Report.ReportActivity;
+
 public class MenuActivity extends Activity {
 
     @Override
@@ -15,10 +16,10 @@ public class MenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        Button btnMakePayment = (Button) findViewById(R.id.btnMakePayment);
-        Button btnSendMoney = (Button) findViewById(R.id.btnSendMoney);
-        Button btnContact = (Button) findViewById(R.id.btnContact);
-        Button btnReport = (Button) findViewById(R.id.btnReport);
+        Button btnMakePayment = findViewById(R.id.btnMakePayment);
+        Button btnSendMoney = findViewById(R.id.btnSendMoney);
+        Button btnContact = findViewById(R.id.btnContact);
+        Button btnReport = findViewById(R.id.btnReport);
 
 
         btnMakePayment.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +37,7 @@ public class MenuActivity extends Activity {
                 startActivity(sendMoney);
             }
         });
+
         /*
         btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,14 +45,15 @@ public class MenuActivity extends Activity {
                 Intent contact = new Intent(MenuActivity.this,ContactActivity.class);
                 startActivity(contact);
             }
-        });
+        });*/
+
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent report = new Intent(MenuActivity.this,ReportActivity.class);
+                Intent report = new Intent(MenuActivity.this, ReportActivity.class);
                 startActivity(report);
             }
-        });*/
+        });
 
     }
 }
