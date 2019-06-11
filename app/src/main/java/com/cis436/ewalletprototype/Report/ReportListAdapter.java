@@ -5,18 +5,33 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.cis436.ewalletprototype.R;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ReportListAdapter extends ArrayAdapter<ReportSample> {
 
     private Context mContext;
-    int mResource;
+    private int mResource;
+    private int lastPosition = -1;
+
+    static class ViewHolder {
+        TextView contactName;
+        TextView contactPhone;
+        TextView contactEmail;
+        TextView contactCompany;
+        TextView salesDate;
+        TextView transactionAmt;
+        TextView transactionId;
+
+    }
 
     public ReportListAdapter(Context context, int resource, ArrayList<ReportSample> objects) {
         super(context, resource, objects);
@@ -36,24 +51,54 @@ public class ReportListAdapter extends ArrayAdapter<ReportSample> {
         String transactionAmt = getItem(position).getTransactionAmt();
         String transactionId = getItem(position).getTransactionId();
 
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        convertView = inflater.inflate(mResource,parent,false);
+        //View result for showing animation
+        final View result;
 
-        TextView tvCName = convertView.findViewById(R.id.contactName);
-        TextView tvCPhone = convertView.findViewById(R.id.contactPhone);
-        TextView tvCEmail = convertView.findViewById(R.id.contactEmail);
-        TextView tvCCompany = convertView.findViewById(R.id.contactCompany);
-        TextView tvSalesDate = convertView.findViewById(R.id.salesDate);
-        TextView tvTransactionAmt = convertView.findViewById(R.id.transactionAmt);
-        TextView tvTransactionId = convertView.findViewById(R.id.transactionId);
+        //ViewHolder Object
+        ViewHolder holder;
 
-        tvCName.setText(contactName);
-        tvCPhone.setText(contactPhone);
-        tvCEmail.setText(contactEmail);
-        tvCCompany.setText(contactCompany);
-        tvSalesDate.setText(salesDate);
-        tvTransactionAmt.setText(transactionAmt);
-        tvTransactionId.setText(transactionId);
+        //Loading few at a time
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+            convertView = inflater.inflate(mResource,parent,false);
+            holder = new ViewHolder();
+            holder.contactName = convertView.findViewById(R.id.contactName);
+            holder.contactPhone = convertView.findViewById(R.id.contactPhone);
+            holder.contactEmail = convertView.findViewById(R.id.contactEmail);
+            holder.contactCompany = convertView.findViewById(R.id.contactCompany);
+            holder.salesDate = convertView.findViewById(R.id.salesDate);
+            holder.transactionAmt = convertView.findViewById(R.id.transactionAmt);
+            holder.transactionId = convertView.findViewById(R.id.transactionId);
+
+            result = convertView;
+
+            convertView.setTag(holder);
+        }
+        else {
+            holder = (ViewHolder) convertView.getTag();
+            result = convertView;
+        }
+
+        //Animation scrolling logic
+        Animation animationScroll = AnimationUtils.loadAnimation(mContext,
+                (position > lastPosition) ? R.anim.load_down_anim : R.anim.load_up_anim);
+        Animation animationFade = AnimationUtils.loadAnimation(mContext, R.anim.fade_in_anim);
+        animationFade.setFillBefore(true);
+
+        AnimationSet animationSet = new AnimationSet(false);
+        animationSet.addAnimation(animationFade);
+        animationSet.addAnimation(animationScroll);
+
+        result.startAnimation(animationSet);
+        lastPosition = position;
+
+        holder.contactName.setText(contactName);
+        holder.contactPhone.setText(contactPhone);
+        holder.contactEmail.setText(contactEmail);
+        holder.contactCompany.setText(contactCompany);
+        holder.salesDate.setText(salesDate);
+        holder.transactionAmt.setText(transactionAmt);
+        holder.transactionId.setText(transactionId);
 
         return convertView;
     }

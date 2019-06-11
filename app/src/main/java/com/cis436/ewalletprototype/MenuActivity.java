@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.cis436.ewalletprototype.P2P.P2PActivity;
 import com.cis436.ewalletprototype.Report.ReportActivity;
 
 public class MenuActivity extends Activity {
@@ -33,7 +34,7 @@ public class MenuActivity extends Activity {
         btnSendMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendMoney = new Intent(MenuActivity.this ,P2PActivity.class);
+                Intent sendMoney = new Intent(MenuActivity.this , P2PActivity.class);
                 startActivity(sendMoney);
             }
         });
