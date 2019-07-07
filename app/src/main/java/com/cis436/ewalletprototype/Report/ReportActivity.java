@@ -1,10 +1,17 @@
 package com.cis436.ewalletprototype.Report;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.cis436.ewalletprototype.MakePaymentActivity;
+import com.cis436.ewalletprototype.MenuActivity;
+import com.cis436.ewalletprototype.P2P.P2PActivity;
 import com.cis436.ewalletprototype.R;
 
 import java.io.BufferedReader;
@@ -22,6 +29,35 @@ public class ReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_report);
 
         ListView mListView = findViewById(R.id.listView);
+
+        //Bottom Navigation Menu
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_report);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch(menuItem.getItemId()) {
+
+                    case R.id.action_makePayment:
+                        finish();
+                        Intent makePayment = new Intent(ReportActivity.this, MakePaymentActivity.class);
+                        startActivity(makePayment);
+                        break;
+
+                    case R.id.action_p2pTransaction:
+                        finish();
+                        Intent p2pTransaction = new Intent(ReportActivity.this, P2PActivity.class);
+                        startActivity(p2pTransaction);
+                        break;
+
+                    case R.id.action_report:
+                        break;
+                }
+
+                return true;
+            }
+        });
 
         readTestData();
 

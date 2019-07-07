@@ -52,7 +52,5 @@
             android:layout_marginTop="20dp"
             android:text="Report" />
 
-
-
     </LinearLayout>
 </RelativeLayout>

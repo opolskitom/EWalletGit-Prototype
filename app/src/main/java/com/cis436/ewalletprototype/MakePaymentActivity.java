@@ -2,14 +2,19 @@ package com.cis436.ewalletprototype;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cis436.ewalletprototype.Config.Config;
+import com.cis436.ewalletprototype.P2P.P2PActivity;
+import com.cis436.ewalletprototype.Report.ReportActivity;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalPaymentDetails;
@@ -55,6 +60,35 @@ public class MakePaymentActivity extends AppCompatActivity {
         btnPayNow = findViewById(R.id.btnPayNow);
         edtAmount = findViewById(R.id.edtAmount);
         edtEmail = findViewById(R.id.edtEmail);
+
+        //Bottom Navigation Menu
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_makePayment);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch(menuItem.getItemId()) {
+
+                    case R.id.action_makePayment:
+                        break;
+
+                    case R.id.action_p2pTransaction:
+                        finish();
+                        Intent p2pTransaction = new Intent(MakePaymentActivity.this, P2PActivity.class);
+                        startActivity(p2pTransaction);
+                        break;
+
+                    case R.id.action_report:
+                        finish();
+                        Intent report = new Intent(MakePaymentActivity.this, ReportActivity.class);
+                        startActivity(report);
+                        break;
+                }
+
+                return true;
+            }
+        });
 
         btnPayNow.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -19,6 +19,9 @@
         <activity android:name=".P2P.P2PActivity" />
         <activity android:name=".P2P.P2PManualActivity" />
         <activity android:name=".MenuActivity" />
+        <activity android:name=".StartingActivity"/>
+        <activity android:name=".signInActivity"/>
+        <activity android:name=".signUpActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

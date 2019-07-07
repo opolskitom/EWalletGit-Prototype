@@ -20,15 +20,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button loginBtn = findViewById(R.id.loginBtn);
-        EditText usernameTxt = findViewById(R.id.usernameEditText);
-        EditText passwordTxt = findViewById(R.id.passwordEditText);
+        Button loginBtn = findViewById(R.id.startBtn);
+
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent MenuActivity = new Intent(MainActivity.this ,MenuActivity.class);
-                startActivity(MenuActivity);
+                Intent StartingActivity = new Intent(MainActivity.this ,StartingActivity.class);
+                startActivity(StartingActivity);
             }
         });
 
