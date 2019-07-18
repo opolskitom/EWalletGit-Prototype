@@ -30,35 +30,6 @@ public class ReportActivity extends AppCompatActivity {
 
         ListView mListView = findViewById(R.id.listView);
 
-        //Bottom Navigation Menu
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_report);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch(menuItem.getItemId()) {
-
-                    case R.id.action_makePayment:
-                        finish();
-                        Intent makePayment = new Intent(ReportActivity.this, MakePaymentActivity.class);
-                        startActivity(makePayment);
-                        break;
-
-                    case R.id.action_p2pTransaction:
-                        finish();
-                        Intent p2pTransaction = new Intent(ReportActivity.this, P2PActivity.class);
-                        startActivity(p2pTransaction);
-                        break;
-
-                    case R.id.action_report:
-                        break;
-                }
-
-                return true;
-            }
-        });
-
         readTestData();
 
         ReportListAdapter adapter = new ReportListAdapter(this, R.layout.adapter_view_layout, reportSamples);

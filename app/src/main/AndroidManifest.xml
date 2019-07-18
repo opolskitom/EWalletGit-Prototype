@@ -21,7 +21,9 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".StartingActivity"/>
         <activity android:name=".signInActivity"/>
-        <activity android:name=".signUpActivity"/>
+        <activity android:name=".SignUpActivities.signUpActivity"/>
+        <activity android:name=".SignUpActivities.signUpP2Activity"/>
+        <activity android:name=".SignUpActivities.signUpP3Activity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

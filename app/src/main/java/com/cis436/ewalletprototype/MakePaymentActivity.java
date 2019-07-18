@@ -26,6 +26,9 @@ import org.json.JSONException;
 
 import java.math.BigDecimal;
 
+//Page Creators/Modifiers: Thomas Opolski, Kelin Tu
+//Required usage of the PayPal API to make payments to a desired address
+
 public class MakePaymentActivity extends AppCompatActivity {
 
     public static final int PAYPAL_REQUEST_CODE = 7171;
@@ -61,34 +64,6 @@ public class MakePaymentActivity extends AppCompatActivity {
         edtAmount = findViewById(R.id.edtAmount);
         edtEmail = findViewById(R.id.edtEmail);
 
-        //Bottom Navigation Menu
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_makePayment);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch(menuItem.getItemId()) {
-
-                    case R.id.action_makePayment:
-                        break;
-
-                    case R.id.action_p2pTransaction:
-                        finish();
-                        Intent p2pTransaction = new Intent(MakePaymentActivity.this, P2PActivity.class);
-                        startActivity(p2pTransaction);
-                        break;
-
-                    case R.id.action_report:
-                        finish();
-                        Intent report = new Intent(MakePaymentActivity.this, ReportActivity.class);
-                        startActivity(report);
-                        break;
-                }
-
-                return true;
-            }
-        });
 
         btnPayNow.setOnClickListener(new View.OnClickListener() {
             @Override

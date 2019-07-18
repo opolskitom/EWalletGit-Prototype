@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+//Page Creators/Modifiers: Thomas Opolski, ...
+//Main startup page, used for checking any necessary information on application start
 
 public class MainActivity extends AppCompatActivity {
 

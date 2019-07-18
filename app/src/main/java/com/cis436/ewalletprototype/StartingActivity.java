@@ -7,6 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.cis436.ewalletprototype.SignUpActivities.signUpActivity;
+
+//Page Creators/Modifiers: Thomas Opolski, ...
+//Initial start page, users will be directed here upon first launching the application
+
 public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +34,7 @@ public class StartingActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signUp = new Intent(StartingActivity.this,signUpActivity.class);
+                Intent signUp = new Intent(StartingActivity.this, signUpActivity.class);
                 finish();
                 startActivity(signUp);
             }

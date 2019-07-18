@@ -8,6 +8,9 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+//Page Creators/Modifiers: Thomas Opolski, Kelin Tu, ...
+//Payment details of a completed transaction done through PayPal
+
 public class PaymentDetailsActivity extends AppCompatActivity {
 
     TextView txtId,txtAmount,txtStatus;

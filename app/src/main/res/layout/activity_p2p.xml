@@ -6,20 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/colorWhite"
-        app:menu="@menu/bottom_nav_main" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <Button
             android:id="@+id/ppOpen"
@@ -28,7 +18,6 @@
             android:gravity="center"
             android:layout_marginTop="250dp"
             android:text="PayPal Send Money" />
-
 
         <Button
             android:id="@+id/manualOpen"

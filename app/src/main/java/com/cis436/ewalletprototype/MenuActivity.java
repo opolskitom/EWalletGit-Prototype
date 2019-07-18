@@ -10,6 +10,9 @@ import android.widget.Button;
 import com.cis436.ewalletprototype.P2P.P2PActivity;
 import com.cis436.ewalletprototype.Report.ReportActivity;
 
+//Page Creators/Modifiers: Thomas Opolski, Kelin Tu, ...
+//Main Sign Up page, users are redirected here upon selection of account creation
+
 public class MenuActivity extends Activity {
 
     @Override

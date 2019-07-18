@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cis436.ewalletprototype.SignUpActivities.signUpActivity;
+
+//Page Creators/Modifiers: Thomas Opolski, ...
+//Main Sign In page, users are redirected here upon selection of account log in
+
 public class signInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,12 +43,13 @@ public class signInActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signUp = new Intent(signInActivity.this,signUpActivity.class);
+                Intent signUp = new Intent(signInActivity.this, signUpActivity.class);
                 finish();
                 startActivity(signUp);
             }
         });
 
+        //REQUIRED USAGE: EDITTEXTS USED FOR SIGNIN (txtEmailInput txtPasswordInput)
 
 
     }
