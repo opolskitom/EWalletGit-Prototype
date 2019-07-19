@@ -13,18 +13,19 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".Config.GetTransactionHistoryActivity"></activity>
-        <activity android:name=".MakePaymentActivity" />
+        <activity android:name=".Payment.MakePaymentActivity" />
         <activity android:name=".Report.ReportActivity" />
-        <activity android:name=".PaymentDetailsActivity" />
+        <activity android:name=".Payment.PaymentDetailsActivity" />
         <activity android:name=".P2P.P2PActivity" />
         <activity android:name=".P2P.P2PManualActivity" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".StartingActivity"/>
-        <activity android:name=".signInActivity"/>
-        <activity android:name=".SignUpActivities.signUpActivity"/>
-        <activity android:name=".SignUpActivities.signUpP2Activity"/>
-        <activity android:name=".SignUpActivities.signUpP3Activity"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Contact.ContactActivity" />
+        <activity android:name=".onStartUp.StartingActivity"/>
+        <activity android:name=".onStartUp.signInActivity"/>
+        <activity android:name=".onStartUp.signUpActivity"/>
+        <activity android:name=".onStartUp.signUpP2Activity"/>
+        <activity android:name=".onStartUp.signUpP3Activity"/>
+        <activity android:name=".onStartUp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

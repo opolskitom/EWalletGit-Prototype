@@ -2,18 +2,12 @@ package com.cis436.ewalletprototype.P2P;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
-import com.cis436.ewalletprototype.MakePaymentActivity;
-import com.cis436.ewalletprototype.MenuActivity;
 import com.cis436.ewalletprototype.R;
-import com.cis436.ewalletprototype.Report.ReportActivity;
 
 public class P2PActivity extends AppCompatActivity {
 

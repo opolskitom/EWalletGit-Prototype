@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.cis436.ewalletprototype.Contact.ContactActivity;
 import com.cis436.ewalletprototype.P2P.P2PActivity;
+import com.cis436.ewalletprototype.Payment.MakePaymentActivity;
 import com.cis436.ewalletprototype.Report.ReportActivity;
 
 //Page Creators/Modifiers: Thomas Opolski, Kelin Tu, ...
@@ -29,7 +31,7 @@ public class MenuActivity extends Activity {
         btnMakePayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent makePayment = new Intent(MenuActivity.this,MakePaymentActivity.class);
+                Intent makePayment = new Intent(MenuActivity.this, MakePaymentActivity.class);
                 startActivity(makePayment);
             }
         });
@@ -42,14 +44,13 @@ public class MenuActivity extends Activity {
             }
         });
 
-        /*
         btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent contact = new Intent(MenuActivity.this,ContactActivity.class);
+                Intent contact = new Intent(MenuActivity.this, ContactActivity.class);
                 startActivity(contact);
             }
-        });*/
+        });
 
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
