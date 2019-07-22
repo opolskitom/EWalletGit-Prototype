@@ -1,4 +1,4 @@
-package com.cis436.ewalletprototype.Contact;
+package com.cis436.ewalletprototype;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,23 +12,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.cis436.ewalletprototype.NotificationsActivity;
-import com.cis436.ewalletprototype.R;
 import com.cis436.ewalletprototype.Report.ReportActivity;
+import com.cis436.ewalletprototype.SideBarItems.HelpActivity;
+import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+//Page Creators/Modifiers: Thomas Opolski, ...
+//Calendar Page
 
-//Page Creators/Modifiers: Thomas Opolski, Kelin Tu, ...
-//Contact Page
-
-public class ContactActivity extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity {
     private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact);
+        setContentView(R.layout.activity_calendar);
 
         //Toolbar back
         ImageButton btnBack = findViewById(R.id.tb_back);
@@ -50,21 +49,24 @@ public class ContactActivity extends AppCompatActivity {
                         break;
 
                     case R.id.reportAction:
-                        Intent report = new Intent(ContactActivity.this, ReportActivity.class);
+                        Intent report = new Intent(CalendarActivity.this, ReportActivity.class);
                         finish();
                         startActivity(report);
                         break;
 
                     case R.id.contactAction:
+                        Intent contact = new Intent(CalendarActivity.this, CalendarActivity.class);
+                        finish();
+                        startActivity(contact);
                         break;
 
                     case R.id.notificationsAction:
-                        Intent notifications = new Intent(ContactActivity.this, NotificationsActivity.class);
+                        Intent notifications = new Intent(CalendarActivity.this, NotificationsActivity.class);
                         startActivity(notifications);
                         break;
 
                     case R.id.settingsAction:
-                        Intent settings = new Intent(ContactActivity.this, SettingsActivity.class);
+                        Intent settings = new Intent(CalendarActivity.this, SettingsActivity.class);
                         finish();
                         startActivity(settings);
                         break;
@@ -81,18 +83,23 @@ public class ContactActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()) {
                     case R.id.dm_profile:
-
+                        Intent profile = new Intent(CalendarActivity.this, ProfileActivity.class);
+                        finish();
+                        startActivity(profile);
                         break;
+
                     case R.id.dm_settings:
-                        Intent settings = new Intent(ContactActivity.this, SettingsActivity.class);
+                        Intent settings = new Intent(CalendarActivity.this, SettingsActivity.class);
                         finish();
                         startActivity(settings);
                         break;
 
                     case R.id.dm_help:
-
-
+                        Intent help = new Intent(CalendarActivity.this, HelpActivity.class);
+                        finish();
+                        startActivity(help);
                         break;
+
                     case R.id.dm_logout:
 
                         //Logout of account

@@ -8,4 +8,5 @@
     <color name="colorFacebook">#3e55f3</color>
     <color name="colorGrey">#d6d6d6</color>
     <color name="colorDimGrey">#616161</color>
+    <color name="blackTransparent">#66000000</color>
 </resources>

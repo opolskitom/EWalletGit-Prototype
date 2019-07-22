@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/hamburgerMenu"
+        android:id="@+id/hamburgerAction"
         android:icon="@drawable/ic_menu"
         android:title="Hamburger Menu"/>
     <item
-        android:id="@+id/reportFragment"
+        android:id="@+id/reportAction"
         android:icon="@drawable/ic_report"
         android:title="Reports"/>
     <item
-        android:id="@+id/contactFragment"
+        android:id="@+id/contactAction"
         android:icon="@drawable/ic_contact"
         android:title="Contacts"/>
     <item
-        android:id="@+id/notificationsFragment"
+        android:id="@+id/notificationsAction"
         android:icon="@drawable/ic_notification"
         android:title="Notifications"/>
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/settingsAction"
         android:icon="@drawable/ic_settings"
         android:title="Settings"/>
 

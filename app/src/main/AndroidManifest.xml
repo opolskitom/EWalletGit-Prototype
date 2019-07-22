@@ -20,6 +20,11 @@
         <activity android:name=".P2P.P2PManualActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".Contact.ContactActivity" />
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".NotificationsActivity" />
+        <activity android:name=".SideBarItems.SettingsActivity" />
+        <activity android:name=".SideBarItems.ProfileActivity" />
+        <activity android:name=".SideBarItems.HelpActivity" />
         <activity android:name=".onStartUp.StartingActivity"/>
         <activity android:name=".onStartUp.signInActivity"/>
         <activity android:name=".onStartUp.signUpActivity"/>

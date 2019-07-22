@@ -1,8 +1,9 @@
-package com.cis436.ewalletprototype.Contact;
+package com.cis436.ewalletprototype.SideBarItems;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,23 +13,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.cis436.ewalletprototype.Contact.ContactActivity;
 import com.cis436.ewalletprototype.NotificationsActivity;
 import com.cis436.ewalletprototype.R;
 import com.cis436.ewalletprototype.Report.ReportActivity;
-import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
-//Page Creators/Modifiers: Thomas Opolski, Kelin Tu, ...
-//Contact Page
+//Page Creators/Modifiers: Thomas Opolski, ...
+//User settings page
 
-public class ContactActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
     private DrawerLayout drawer;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact);
+        setContentView(R.layout.activity_settings);
 
         //Toolbar back
         ImageButton btnBack = findViewById(R.id.tb_back);
@@ -50,23 +52,23 @@ public class ContactActivity extends AppCompatActivity {
                         break;
 
                     case R.id.reportAction:
-                        Intent report = new Intent(ContactActivity.this, ReportActivity.class);
+                        Intent report = new Intent(SettingsActivity.this, ReportActivity.class);
                         finish();
                         startActivity(report);
                         break;
 
                     case R.id.contactAction:
+                        Intent contact = new Intent(SettingsActivity.this, ContactActivity.class);
+                        finish();
+                        startActivity(contact);
                         break;
 
                     case R.id.notificationsAction:
-                        Intent notifications = new Intent(ContactActivity.this, NotificationsActivity.class);
+                        Intent notifications = new Intent(SettingsActivity.this, NotificationsActivity.class);
                         startActivity(notifications);
                         break;
 
                     case R.id.settingsAction:
-                        Intent settings = new Intent(ContactActivity.this, SettingsActivity.class);
-                        finish();
-                        startActivity(settings);
                         break;
                 }
                 return true;
@@ -81,18 +83,23 @@ public class ContactActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()) {
                     case R.id.dm_profile:
-
+                        Intent profile = new Intent(SettingsActivity.this, ProfileActivity.class);
+                        finish();
+                        startActivity(profile);
                         break;
+
                     case R.id.dm_settings:
-                        Intent settings = new Intent(ContactActivity.this, SettingsActivity.class);
+                        Intent settings = new Intent(SettingsActivity.this, SettingsActivity.class);
                         finish();
                         startActivity(settings);
                         break;
 
                     case R.id.dm_help:
-
-
+                        Intent help = new Intent(SettingsActivity.this, HelpActivity.class);
+                        finish();
+                        startActivity(help);
                         break;
+
                     case R.id.dm_logout:
 
                         //Logout of account
@@ -104,9 +111,10 @@ public class ContactActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
+
+    //Back Pressed Closes Drawer Menu
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -115,4 +123,5 @@ public class ContactActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 }

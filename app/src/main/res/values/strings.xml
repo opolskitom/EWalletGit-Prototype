@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">EWalletPrototype</string>
+
+    <string name="user_fullname">fullname</string>
+    <string name="user_phonenumber">phonenumber</string>
+    <string name="user_firstname">firstname</string>
 </resources>
