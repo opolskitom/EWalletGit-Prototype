@@ -11,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.cis436.ewalletprototype.Contact.ContactActivity;
 import com.cis436.ewalletprototype.Report.ReportActivity;
 import com.cis436.ewalletprototype.SideBarItems.HelpActivity;
 import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
@@ -38,6 +40,11 @@ public class CalendarActivity extends AppCompatActivity {
             }
         });
 
+        //Get user name and phone from prev activity
+        Bundle extras = getIntent().getExtras();
+        final String userFullName = extras.getString("navUserName");
+        final String userPhoneNumber = extras.getString("navPhoneNum");
+
         //Bottom Navigation
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottom_bar);
         bottomNavigationViewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -51,23 +58,32 @@ public class CalendarActivity extends AppCompatActivity {
                     case R.id.reportAction:
                         Intent report = new Intent(CalendarActivity.this, ReportActivity.class);
                         finish();
+                        report.putExtra("navUserName", userFullName);
+                        report.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(report);
                         break;
 
                     case R.id.contactAction:
-                        Intent contact = new Intent(CalendarActivity.this, CalendarActivity.class);
+                        Intent contact = new Intent(CalendarActivity.this, ContactActivity.class);
                         finish();
+                        contact.putExtra("navUserName", userFullName);
+                        contact.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(contact);
                         break;
 
                     case R.id.notificationsAction:
                         Intent notifications = new Intent(CalendarActivity.this, NotificationsActivity.class);
+                        finish();
+                        notifications.putExtra("navUserName", userFullName);
+                        notifications.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(notifications);
                         break;
 
                     case R.id.settingsAction:
                         Intent settings = new Intent(CalendarActivity.this, SettingsActivity.class);
                         finish();
+                        settings.putExtra("navUserName", userFullName);
+                        settings.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(settings);
                         break;
                 }
@@ -78,6 +94,11 @@ public class CalendarActivity extends AppCompatActivity {
         //Drawer Navigation
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUserName = headerView.findViewById(R.id. nav_user_name);    //Navigation bar user items
+        TextView navPhoneNum = headerView.findViewById(R.id.nav_user_phone);
+        navUserName.setText(userFullName);
+        navPhoneNum.setText(userPhoneNumber);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -85,18 +106,24 @@ public class CalendarActivity extends AppCompatActivity {
                     case R.id.dm_profile:
                         Intent profile = new Intent(CalendarActivity.this, ProfileActivity.class);
                         finish();
+                        profile.putExtra("navUserName", userFullName);
+                        profile.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(profile);
                         break;
 
                     case R.id.dm_settings:
                         Intent settings = new Intent(CalendarActivity.this, SettingsActivity.class);
                         finish();
+                        settings.putExtra("navUserName", userFullName);
+                        settings.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(settings);
                         break;
 
                     case R.id.dm_help:
                         Intent help = new Intent(CalendarActivity.this, HelpActivity.class);
                         finish();
+                        help.putExtra("navUserName", userFullName);
+                        help.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(help);
                         break;
 

@@ -12,6 +12,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.cis436.ewalletprototype.Contact.ContactActivity;
 import com.cis436.ewalletprototype.P2P.P2PActivity;
@@ -22,8 +24,15 @@ import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 //Page Creators/Modifiers: Thomas Opolski, ...
 //Main home menu page
+//DataBase items: Full and First Name & Phone Number
 
 public class MenuActivity extends Activity {
     private DrawerLayout drawer;
@@ -32,6 +41,35 @@ public class MenuActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        //Set Texts for Name/Phone Numbers (NEED to PULL NAMES and NUMBER)
+                String userFirstName = "Zaina";
+                String userLastName = "Temporary";
+                final String userFullName = userFirstName + " " + userLastName;
+                final String userPhoneNumber = "(123) 123-1234";
+
+        //Toolbar pfp
+        ImageButton btnBack = findViewById(R.id.tb_pfp);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent profile = new Intent(MenuActivity.this, ProfileActivity.class);
+                drawer.closeDrawer(GravityCompat.START);
+                profile.putExtra("navUserName", userFullName);
+                profile.putExtra("navPhoneNum", userPhoneNumber);
+                startActivity(profile);
+            }
+        });
+
+        //Toolbar welcome message
+        TextView welcomeMessage = findViewById(R.id.tb_welcomeMessage);        //Welcome message
+        String welcome_message = getString(R.string.user_welcomemessage, userFirstName);
+        welcomeMessage.setText(welcome_message);
+
+        //Toolbar date message
+        String currentDate = "Today is " + new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(new Date());
+        TextView currentTime = findViewById(R.id.tb_todayDate);
+        currentTime.setText(currentDate);
 
         //Bottom Navigation
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottom_bar);
@@ -45,21 +83,29 @@ public class MenuActivity extends Activity {
 
                     case R.id.reportAction:
                         Intent report = new Intent(MenuActivity.this, ReportActivity.class);
+                        report.putExtra("navUserName", userFullName);
+                        report.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(report);
                         break;
 
                     case R.id.contactAction:
                         Intent contact = new Intent(MenuActivity.this, ContactActivity.class);
+                        contact.putExtra("navUserName", userFullName);
+                        contact.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(contact);
                         break;
 
                     case R.id.notificationsAction:
                         Intent notifications = new Intent(MenuActivity.this, NotificationsActivity.class);
+                        notifications.putExtra("navUserName", userFullName);
+                        notifications.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(notifications);
                         break;
 
                     case R.id.settingsAction:
                         Intent settings = new Intent(MenuActivity.this, SettingsActivity.class);
+                        settings.putExtra("navUserName", userFullName);
+                        settings.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(settings);
                         break;
                 }
@@ -70,6 +116,12 @@ public class MenuActivity extends Activity {
         //Drawer Navigation
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUserName = headerView.findViewById(R.id. nav_user_name);    //Navigation bar user items
+        TextView navPhoneNum = headerView.findViewById(R.id.nav_user_phone);
+        navUserName.setText(userFullName);
+        navPhoneNum.setText(userPhoneNumber);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -77,17 +129,24 @@ public class MenuActivity extends Activity {
                     case R.id.dm_profile:
                         Intent profile = new Intent(MenuActivity.this, ProfileActivity.class);
                         drawer.closeDrawer(GravityCompat.START);
+                        profile.putExtra("navUserName", userFullName);
+                        profile.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(profile);
                         break;
 
                     case R.id.dm_settings:
-                        Intent settings = new Intent(MenuActivity.this, ContactActivity.class);
+                        Intent settings = new Intent(MenuActivity.this, SettingsActivity.class);
                         drawer.closeDrawer(GravityCompat.START);
+                        settings.putExtra("navUserName", userFullName);
+                        settings.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(settings);
                         break;
+
                     case R.id.dm_help:
                         Intent help = new Intent(MenuActivity.this, HelpActivity.class);
                         drawer.closeDrawer(GravityCompat.START);
+                        help.putExtra("navUserName", userFullName);
+                        help.putExtra("navPhoneNum", userPhoneNumber);
                         startActivity(help);
                         break;
 
@@ -96,7 +155,6 @@ public class MenuActivity extends Activity {
                         //Logout of account
                         break;
                 }
-
                 return true;
             }
         });
@@ -113,6 +171,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent makePayment = new Intent(MenuActivity.this, MakePaymentActivity.class);
+                makePayment.putExtra("navUserName", userFullName);
+                makePayment.putExtra("navPhoneNum", userPhoneNumber);
                 startActivity(makePayment);
             }
         });
@@ -121,6 +181,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent sendMoney = new Intent(MenuActivity.this , P2PActivity.class);
+                sendMoney.putExtra("navUserName", userFullName);
+                sendMoney.putExtra("navPhoneNum", userPhoneNumber);
                 startActivity(sendMoney);
             }
         });
@@ -129,6 +191,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent contact = new Intent(MenuActivity.this, ContactActivity.class);
+                contact.putExtra("navUserName", userFullName);
+                contact.putExtra("navPhoneNum", userPhoneNumber);
                 startActivity(contact);
             }
         });
@@ -137,6 +201,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent report = new Intent(MenuActivity.this, ReportActivity.class);
+                report.putExtra("navUserName", userFullName);
+                report.putExtra("navPhoneNum", userPhoneNumber);
                 startActivity(report);
             }
         });
@@ -145,6 +211,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent settings = new Intent(MenuActivity.this, SettingsActivity.class);
+                settings.putExtra("navUserName", userFullName);
+                settings.putExtra("navPhoneNum", userPhoneNumber);
                 startActivity(settings);
             }
         });
@@ -153,6 +221,8 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent calendar = new Intent(MenuActivity.this, CalendarActivity.class);
+                calendar.putExtra("navUserName", userFullName);
+                calendar.putExtra("navPhoneNum", userPhoneNumber);
                 startActivity(calendar);
             }
         });
@@ -168,7 +238,5 @@ public class MenuActivity extends Activity {
         }
     }
 
-
 }
-
 
