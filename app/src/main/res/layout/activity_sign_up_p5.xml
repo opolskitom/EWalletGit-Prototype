@@ -36,7 +36,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center_horizontal|center_vertical"
-        android:text="What role are you creating this account for?"
+        android:text="Would you like to create a team now?"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorWhite"
         android:textSize="19sp"
@@ -49,11 +49,11 @@
 
 
     <Button
-        android:id="@+id/sign_up_manager"
+        android:id="@+id/create_now_btn"
         android:layout_width="154dp"
         android:layout_height="34dp"
         android:background="@drawable/button_selection"
-        android:text="Sales Manager"
+        android:text="Create Team"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,11 +64,11 @@
         app:layout_constraintVertical_bias="0.282" />
 
     <Button
-        android:id="@+id/sign_up_agent"
+        android:id="@+id/create_later_btn"
         android:layout_width="154dp"
         android:layout_height="34dp"
         android:background="@drawable/button_selection"
-        android:text="Sales Agent"
+        android:text="Maybe later"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,10 +79,10 @@
         app:layout_constraintVertical_bias="0.282" />
 
     <ImageView
-        android:id="@+id/img_manager_agent"
+        android:id="@+id/create_team_img"
         android:layout_width="339dp"
         android:layout_height="474dp"
-        android:src="@drawable/signup_agent"
+        android:src="@drawable/create_team"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -96,7 +96,7 @@
         android:layout_height="34dp"
         android:layout_marginBottom="44dp"
         android:background="@drawable/button"
-        android:text="Next Step"
+        android:text="Continue"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"

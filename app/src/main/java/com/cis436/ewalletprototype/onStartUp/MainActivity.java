@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent StartingActivity = new Intent(MainActivity.this , com.cis436.ewalletprototype.onStartUp.StartingActivity.class);
+                Intent StartingActivity = new Intent(MainActivity.this , signUpP3Activity.class);
                 startActivity(StartingActivity);
             }
         });

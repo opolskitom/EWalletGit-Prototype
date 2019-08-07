@@ -48,8 +48,8 @@
 
     <View
         android:id="@+id/bgView"
-        android:layout_width="362dp"
-        android:layout_height="353dp"
+        android:layout_width="365dp"
+        android:layout_height="380dp"
         android:background="@drawable/background_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,6 +68,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:paddingTop="10dp"
         android:backgroundTint="@color/colorDimGrey"
         android:ems="20"
         android:hint="Full Name"
@@ -79,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="@id/bgView"
         app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintTop_toTopOf="@id/bgView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/txtEmailAddressInput"
@@ -102,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="@id/bgView"
         app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintTop_toTopOf="@id/bgView"
-        app:layout_constraintVertical_bias="0.1667" />
+        app:layout_constraintVertical_bias="0.175" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/txtPasswordInput"
@@ -125,7 +126,7 @@
         app:layout_constraintEnd_toEndOf="@id/bgView"
         app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintTop_toTopOf="@id/bgView"
-        app:layout_constraintVertical_bias="0.3334" />
+        app:layout_constraintVertical_bias="0.33" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/txtCountry"
@@ -148,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="@id/bgView"
         app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintTop_toTopOf="@id/bgView"
-        app:layout_constraintVertical_bias="0.5001" />
+        app:layout_constraintVertical_bias="0.485" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/txtZipCode"
@@ -171,7 +172,7 @@
         app:layout_constraintEnd_toEndOf="@id/bgView"
         app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintTop_toTopOf="@id/bgView"
-        app:layout_constraintVertical_bias="0.6668" />
+        app:layout_constraintVertical_bias="0.64" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/txtCompanyName"
@@ -194,7 +195,7 @@
         app:layout_constraintEnd_toEndOf="@id/bgView"
         app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintTop_toTopOf="@id/bgView"
-        app:layout_constraintVertical_bias="0.8335" />
+        app:layout_constraintVertical_bias="0.795" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/txtCompanyAddress"
@@ -217,7 +218,7 @@
         app:layout_constraintEnd_toEndOf="@id/bgView"
         app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintTop_toTopOf="@id/bgView"
-        app:layout_constraintVertical_bias="1" />
+        app:layout_constraintVertical_bias=".95" />
 
     <Button
         android:id="@+id/continueBtn"

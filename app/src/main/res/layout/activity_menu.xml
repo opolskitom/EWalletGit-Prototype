@@ -82,15 +82,15 @@
 
         <ImageView
             android:id="@+id/img_payments"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="100dp"
+            android:layout_height="95dp"
             android:elevation="6dp"
             android:outlineProvider="none"
             app:layout_constraintBottom_toBottomOf="@+id/btnMakePayment"
             app:layout_constraintEnd_toEndOf="@+id/btnMakePayment"
             app:layout_constraintStart_toStartOf="@+id/btnMakePayment"
             app:layout_constraintTop_toTopOf="@+id/btnMakePayment"
-            android:src="@drawable/db_cards" />
+            android:src="@drawable/db_accounts" />
 
         <Button
             android:id="@+id/btnMakePayment"
@@ -172,7 +172,7 @@
         <ImageView
             android:id="@+id/img_report"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="70dp"
             android:elevation="6dp"
             android:outlineProvider="none"
             app:layout_constraintBottom_toBottomOf="@+id/btnReport"

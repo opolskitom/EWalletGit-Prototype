@@ -1,18 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout">
 
-    <ListView
-        android:id="@+id/listView"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        >
+        android:layout_height="match_parent">
 
-    </ListView>
-</RelativeLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageButton
+                android:id="@+id/tb_back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="20dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:background="@drawable/back_selector"
+                />
+
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginBottom="69dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/parent_scroll"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="375dp"
+                        android:layout_height="450dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/background_outline">
+
+                        <TextView
+                            android:id="@+id/analytics_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Analytics Report"
+                            android:gravity="center"
+                            android:paddingTop="24dp"
+                            android:textSize="24sp"
+                            android:textColor="@color/colorPrimary"
+                            />
+
+                        <TextView
+                            android:id="@+id/current_balance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Current Balance"
+                            android:gravity="start"
+                            android:layout_marginTop="22dp"
+                            android:paddingLeft="28dp"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorDimGrey"
+                            android:layout_below="@+id/analytics_text"
+                            />
+
+                        <TextView
+                            android:id="@+id/balance_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/current_balance"
+                            android:text="$562"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="45sp"
+                            android:layout_marginTop="-8dp"
+                            android:gravity="start"
+                            android:paddingLeft="22dp"
+                            />
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/main_linechart"
+                            android:layout_width="match_parent"
+                            android:layout_height="265dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="20dp">
+
+                        </com.github.mikephil.charting.charts.LineChart>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp" />
+
+                    <RelativeLayout
+                        android:layout_width="375dp"
+                        android:layout_height="500dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/background_outline"
+                        android:scrollbars="none">
+
+                        <TextView
+                            android:id="@+id/transactions_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Transactions"
+                            android:paddingLeft="10dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/colorPrimary"
+                            android:gravity="center"
+                            android:paddingTop="20dp"/>
+
+                        <TextView
+                            android:id="@+id/daily_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Daily"
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:paddingRight="110dp"
+                            android:layout_below="@id/transactions_text"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="|"
+                            android:textSize="14sp"
+                            android:paddingLeft="60dp"
+                            android:gravity="center"
+                            android:layout_below="@id/transactions_text"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/weekly_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Weekly"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorPrimary"
+                            android:gravity="center"
+                            android:layout_below="@id/transactions_text"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="|"
+                            android:textSize="14sp"
+                            android:paddingRight="60dp"
+                            android:gravity="center"
+                            android:layout_below="@id/transactions_text"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/monthly_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Monthly"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorPrimary"
+                            android:gravity="center"
+                            android:paddingLeft="120dp"
+                            android:layout_below="@id/transactions_text"/>
+
+                        <ListView
+                            android:id="@+id/listView"
+                            android:layout_below="@id/daily_text"
+                            android:scrollbars="none"
+                            android:layout_width="375dp"
+                            android:layout_height="500dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp" />
+
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+
+        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@color/colorWhite"
+            app:labelVisibilityMode="unlabeled"
+            app:itemTextColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:menu="@menu/menu_bottom_nav" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorPrimary"
+        app:headerLayout="@layout/nav_header"
+        app:itemTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:itemTextColor="@color/colorWhite"
+        app:menu="@menu/menu_drawer"/>
+
+</android.support.v4.widget.DrawerLayout>

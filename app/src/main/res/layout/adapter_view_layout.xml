@@ -6,63 +6,66 @@
     android:weightSum="100">
 
 
-    <TextView
-        android:gravity="center"
-        android:textAlignment="center"
-        android:text="TransactionAmt"
-        android:layout_width="match_parent"
-        android:layout_height="121dp"
-        android:id="@+id/transactionAmt"
-        android:layout_weight="66.6"/>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="33.3">
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <TextView
-            android:gravity="center"
+            android:text="salesDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/salesDate"/>
+
+        <TextView
+            android:text="TransactionAmt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:id="@+id/transactionAmt" />
+
+        <TextView
             android:text="contactName"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
             android:id="@+id/contactName"/>
 
         <TextView
-            android:gravity="center"
             android:text="contactCompany"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
             android:id="@+id/contactCompany"
             />
 
         <TextView
-            android:gravity="center"
             android:text="contactEmail"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
             android:id="@+id/contactEmail"/>
 
         <TextView
-            android:gravity="center"
             android:text="contactPhone"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
             android:id="@+id/contactPhone"
             />
 
         <TextView
-            android:gravity="center"
-            android:text="salesDate"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:id="@+id/salesDate"/>
-
-        <TextView
-            android:gravity="center"
             android:text="transactionId"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
             android:id="@+id/transactionId"
             />
 

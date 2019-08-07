@@ -170,20 +170,20 @@ public class MenuActivity extends Activity {
         btnMakePayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent makePayment = new Intent(MenuActivity.this, MakePaymentActivity.class);
-                makePayment.putExtra("navUserName", userFullName);
-                makePayment.putExtra("navPhoneNum", userPhoneNumber);
-                startActivity(makePayment);
+                Intent myAccounts = new Intent(MenuActivity.this, AccountsActivity.class);
+                myAccounts.putExtra("navUserName", userFullName);
+                myAccounts.putExtra("navPhoneNum", userPhoneNumber);
+                startActivity(myAccounts);
             }
         });
 
         btnSendMoney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendMoney = new Intent(MenuActivity.this , P2PActivity.class);
-                sendMoney.putExtra("navUserName", userFullName);
-                sendMoney.putExtra("navPhoneNum", userPhoneNumber);
-                startActivity(sendMoney);
+                Intent teams = new Intent(MenuActivity.this , TeamActivity.class);
+                teams.putExtra("navUserName", userFullName);
+                teams.putExtra("navPhoneNum", userPhoneNumber);
+                startActivity(teams);
             }
         });
 

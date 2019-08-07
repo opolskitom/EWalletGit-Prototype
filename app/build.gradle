@@ -31,7 +31,7 @@ dependencies {
     //CustomTabs for PayPal Send money
     implementation 'com.android.support:customtabs:28.0.0'
 
-    //Design for BottomNavigationView
+    //Design for UI
     implementation 'com.android.support:design:28.0.0'
 
     //Email Validation
@@ -42,5 +42,8 @@ dependencies {
 
     //Navigation Drawer
     implementation 'com.android.support:design:28.0.0'
+
+    //Report Graph
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }

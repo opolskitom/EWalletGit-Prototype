@@ -22,6 +22,8 @@
         <activity android:name=".Contact.ContactActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".NotificationsActivity" />
+        <activity android:name=".AccountsActivity" />
+        <activity android:name=".TeamActivity" />
         <activity android:name=".SideBarItems.SettingsActivity" />
         <activity android:name=".SideBarItems.ProfileActivity" />
         <activity android:name=".SideBarItems.HelpActivity" />
@@ -30,6 +32,8 @@
         <activity android:name=".onStartUp.signUpActivity"/>
         <activity android:name=".onStartUp.signUpP2Activity"/>
         <activity android:name=".onStartUp.signUpP3Activity"/>
+        <activity android:name=".onStartUp.signUpP4Activity"/>
+        <activity android:name=".onStartUp.signUpP5Activity"/>
         <activity android:name=".onStartUp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
