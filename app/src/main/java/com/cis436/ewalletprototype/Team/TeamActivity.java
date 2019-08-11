@@ -1,9 +1,9 @@
-package com.cis436.ewalletprototype.SideBarItems;
+package com.cis436.ewalletprototype.Team;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,54 +15,26 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.cis436.ewalletprototype.Contact.ContactActivity;
 import com.cis436.ewalletprototype.NotificationsActivity;
 import com.cis436.ewalletprototype.R;
 import com.cis436.ewalletprototype.Report.ReportActivity;
 import com.cis436.ewalletprototype.SideBarItems.Help.HelpActivity;
+import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
+import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
 //Page Creators/Modifiers: Thomas Opolski, ...
-//User settings page
+//Contact Page
 
-public class SettingsActivity extends AppCompatActivity {
+public class TeamActivity extends AppCompatActivity {
     private DrawerLayout drawer;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_team);
 
-        //Toolbar back
-        setToolbar();
-
-        //Set navigation menus
-        setNavViews();
-
-        //Settings list items
-        RelativeLayout viewCard1 = findViewById(R.id.view_card1);
-        RelativeLayout viewCard2 = findViewById(R.id.view_card2);
-
-        viewCard1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        viewCard2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-    }
-
-
-    private void setToolbar() {
         //Toolbar back
         ImageButton btnBack = findViewById(R.id.tb_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +43,8 @@ public class SettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
 
-    private void setNavViews() {
-        //Get user's name and phone from prev activity
+        //Get user name and phone from prev activity
         Bundle extras = getIntent().getExtras();
         final String userFullName = extras.getString("navUserName");
         final String userPhoneNumber = extras.getString("navPhoneNum");
@@ -90,7 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
                         break;
 
                     case R.id.reportAction:
-                        Intent report = new Intent(SettingsActivity.this, ReportActivity.class);
+                        Intent report = new Intent(TeamActivity.this, ReportActivity.class);
                         finish();
                         report.putExtra("navUserName", userFullName);
                         report.putExtra("navPhoneNum", userPhoneNumber);
@@ -98,15 +68,10 @@ public class SettingsActivity extends AppCompatActivity {
                         break;
 
                     case R.id.contactAction:
-                        Intent contact = new Intent(SettingsActivity.this, ContactActivity.class);
-                        finish();
-                        contact.putExtra("navUserName", userFullName);
-                        contact.putExtra("navPhoneNum", userPhoneNumber);
-                        startActivity(contact);
                         break;
 
                     case R.id.notificationsAction:
-                        Intent notifications = new Intent(SettingsActivity.this, NotificationsActivity.class);
+                        Intent notifications = new Intent(TeamActivity.this, NotificationsActivity.class);
                         finish();
                         notifications.putExtra("navUserName", userFullName);
                         notifications.putExtra("navPhoneNum", userPhoneNumber);
@@ -114,6 +79,11 @@ public class SettingsActivity extends AppCompatActivity {
                         break;
 
                     case R.id.settingsAction:
+                        Intent settings = new Intent(TeamActivity.this, SettingsActivity.class);
+                        finish();
+                        settings.putExtra("navUserName", userFullName);
+                        settings.putExtra("navPhoneNum", userPhoneNumber);
+                        startActivity(settings);
                         break;
                 }
                 return true;
@@ -133,7 +103,7 @@ public class SettingsActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()) {
                     case R.id.dm_profile:
-                        Intent profile = new Intent(SettingsActivity.this, ProfileActivity.class);
+                        Intent profile = new Intent(TeamActivity.this, ProfileActivity.class);
                         finish();
                         profile.putExtra("navUserName", userFullName);
                         profile.putExtra("navPhoneNum", userPhoneNumber);
@@ -141,7 +111,7 @@ public class SettingsActivity extends AppCompatActivity {
                         break;
 
                     case R.id.dm_settings:
-                        Intent settings = new Intent(SettingsActivity.this, SettingsActivity.class);
+                        Intent settings = new Intent(TeamActivity.this, SettingsActivity.class);
                         finish();
                         settings.putExtra("navUserName", userFullName);
                         settings.putExtra("navPhoneNum", userPhoneNumber);
@@ -149,7 +119,7 @@ public class SettingsActivity extends AppCompatActivity {
                         break;
 
                     case R.id.dm_help:
-                        Intent help = new Intent(SettingsActivity.this, HelpActivity.class);
+                        Intent help = new Intent(TeamActivity.this, HelpActivity.class);
                         finish();
                         help.putExtra("navUserName", userFullName);
                         help.putExtra("navPhoneNum", userPhoneNumber);
@@ -166,6 +136,29 @@ public class SettingsActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //Teams
+        RelativeLayout viewCard1 = findViewById(R.id.view_card1);
+        viewCard1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        //Invitations
+        final ImageButton invitesBtn = findViewById(R.id.invites_btn);
+        invitesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent invites = new Intent(TeamActivity.this, InvitesActivity.class);
+                startActivity(invites);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -176,5 +169,4 @@ public class SettingsActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
 }

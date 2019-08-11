@@ -11,10 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cis436.ewalletprototype.Report.ReportActivity;
-import com.cis436.ewalletprototype.SideBarItems.HelpActivity;
+import com.cis436.ewalletprototype.SideBarItems.Help.HelpActivity;
 import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -32,6 +33,25 @@ public class AccountsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_accounts);
 
         //Toolbar back
+        setToolbar();
+
+        //Set navigation menus
+        setNavViews();
+
+        //PayPal Account
+        RelativeLayout viewCard1 = findViewById(R.id.view_card1);
+        viewCard1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+    }
+
+    private void setToolbar() {
+        //Toolbar back
         ImageButton btnBack = findViewById(R.id.tb_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +59,9 @@ public class AccountsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void setNavViews() {
 
         //Get user name and phone from prev activity
         Bundle extras = getIntent().getExtras();
@@ -132,7 +155,6 @@ public class AccountsActivity extends AppCompatActivity {
                 return true;
             }
         });
-
 
     }
 

@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.cis436.ewalletprototype.Contact.ContactActivity;
 import com.cis436.ewalletprototype.Report.ReportActivity;
-import com.cis436.ewalletprototype.SideBarItems.HelpActivity;
+import com.cis436.ewalletprototype.SideBarItems.Help.HelpActivity;
 import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -32,6 +32,15 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         //Toolbar back
+        setToolbar();
+
+        //Set navigation menus
+        setNavViews();
+
+    }
+
+    private void setToolbar() {
+        //Toolbar back
         ImageButton btnBack = findViewById(R.id.tb_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +48,9 @@ public class CalendarActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
 
+    private void setNavViews() {
         //Get user name and phone from prev activity
         Bundle extras = getIntent().getExtras();
         final String userFullName = extras.getString("navUserName");
@@ -138,8 +149,8 @@ public class CalendarActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
 
     @Override
     public void onBackPressed() {

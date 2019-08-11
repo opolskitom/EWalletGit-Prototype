@@ -42,7 +42,6 @@ public class signUpActivity extends AppCompatActivity {
                 //If fields are valid, proceed, if not, create dialog
                 if (valid) {
                     Intent signUpP2 = new Intent(signUpActivity.this, signUpP2Activity.class);
-                    finish();
                     startActivity(signUpP2);
                 }
                 else {

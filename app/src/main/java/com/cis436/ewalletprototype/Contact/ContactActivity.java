@@ -16,23 +16,33 @@ import android.widget.TextView;
 import com.cis436.ewalletprototype.NotificationsActivity;
 import com.cis436.ewalletprototype.R;
 import com.cis436.ewalletprototype.Report.ReportActivity;
-import com.cis436.ewalletprototype.SideBarItems.HelpActivity;
+import com.cis436.ewalletprototype.SideBarItems.Help.HelpActivity;
 import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
-//Page Creators/Modifiers: Thomas Opolski, Kelin Tu, ...
+//Page Creators/Modifiers: Thomas Opolski, ...
 //Contact Page
 
 public class ContactActivity extends AppCompatActivity {
     private DrawerLayout drawer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
+        //Toolbar back
+        setToolbar();
+
+        //Set navigation menus
+        setNavViews();
+
+    }
+
+    private void setToolbar() {
         //Toolbar back
         ImageButton btnBack = findViewById(R.id.tb_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +51,9 @@ public class ContactActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
 
+    private void setNavViews() {
         //Get user name and phone from prev activity
         Bundle extras = getIntent().getExtras();
         final String userFullName = extras.getString("navUserName");
@@ -134,8 +146,6 @@ public class ContactActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     @Override

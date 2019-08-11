@@ -1,7 +1,6 @@
 package com.cis436.ewalletprototype.Report;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,33 +13,24 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.cis436.ewalletprototype.CalendarActivity;
 import com.cis436.ewalletprototype.Contact.ContactActivity;
 import com.cis436.ewalletprototype.NotificationsActivity;
 import com.cis436.ewalletprototype.R;
-import com.cis436.ewalletprototype.SideBarItems.HelpActivity;
+import com.cis436.ewalletprototype.SideBarItems.Help.HelpActivity;
 import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.listener.OnChartGestureListener;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.io.BufferedReader;
@@ -48,11 +38,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
+
+//Page Creators/Modifiers: Thomas Opolski, ...
+//Report Page
 
 public class ReportActivity extends AppCompatActivity {
     private DrawerLayout drawer;
@@ -63,6 +52,113 @@ public class ReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_report);
 
         //Toolbar back
+        setToolbar();
+
+        //Set navigation menus
+        setNavViews();
+
+        //Allowing Scroll for both ListView and ScrollView
+        NestedScrollView parentScroll = findViewById(R.id.parent_scroll);
+        final ListView mListView = findViewById(R.id.listView);
+        parentScroll.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+                findViewById(R.id.listView).getParent().getParent().requestDisallowInterceptTouchEvent(false);
+                return false;
+            }
+        });
+        mListView.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
+        //Click Transactions to return to top
+        TextView transactionTxt = findViewById(R.id.transactions_text);
+        transactionTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListView.smoothScrollToPosition(0);
+            }
+        });
+
+
+        //Reading the data
+        readTestData();
+
+        //-----------------------------------------------------------------------------
+        // Graphing the data
+        LineChart reportChart = findViewById(R.id.main_linechart);
+
+        //reportChart.setOnChartGestureListener(ReportActivity.this);
+       // reportChart.setOnChartValueSelectedListener(ReportActivity.this);
+        reportChart.setDragEnabled(true);
+        reportChart.setScaleEnabled(false);
+
+        ArrayList<Entry> yValues = new ArrayList<>();
+
+        yValues.add(new Entry(0, 60f));
+        yValues.add(new Entry(1, 40f));
+        yValues.add(new Entry(2, 70f));
+        yValues.add(new Entry(3, 50f));
+        yValues.add(new Entry(4, 40f));
+        yValues.add(new Entry(5, 80f));
+        yValues.add(new Entry(6, 70f));
+
+        LineDataSet set1 = new LineDataSet(yValues, "Data Set 1");
+        set1.setColor(getResources().getColor(R.color.colorPrimary));
+        set1.setCircleColor(getResources().getColor(R.color.colorPrimary));
+        set1.setLineWidth(3f);
+        set1.setValueTextSize(15f);
+        set1.setValueTextColor(getResources().getColor(android.R.color.transparent));
+
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(set1);
+
+        LineData data = new LineData(dataSets);
+        reportChart.setViewPortOffsets(0,0,0,50);
+        reportChart.getAxisRight().setEnabled(false);
+
+        reportChart.getDescription().setEnabled(false);
+        reportChart.getLegend().setEnabled(false);
+
+        XAxis xAxis = reportChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setTextSize(12f);
+        xAxis.setSpaceMin(-0.5f);
+        xAxis.setSpaceMax(-0.5f);
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(getXAxisValues()));
+        xAxis.setTextColor(getResources().getColor(R.color.blackTransparent));
+
+        YAxis yAxis = reportChart.getAxisLeft();
+        yAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
+        yAxis.setDrawAxisLine(false);
+        yAxis.setYOffset(-12f);
+        yAxis.setXOffset(20f);
+        yAxis.setTextSize(12f);
+        yAxis.setSpaceTop(20f);
+        yAxis.setSpaceBottom(20f);
+        xAxis.setGranularity(1f);
+        yAxis.setTextColor(getResources().getColor(R.color.blackTransparent));
+
+
+        reportChart.setData(data);
+        reportChart.notifyDataSetChanged();
+        reportChart.invalidate();
+
+
+        //----------------------------------------------------------------------------
+
+        ReportListAdapter adapter = new ReportListAdapter(this, R.layout.adapter_view_layout, reportSamples);
+        mListView.setAdapter(adapter);
+    }
+
+
+    private void setToolbar() {
+        //Toolbar back
         ImageButton btnBack = findViewById(R.id.tb_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +166,9 @@ public class ReportActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
 
+    private void setNavViews() {
         //Get user name and phone from prev activity
         Bundle extras = getIntent().getExtras();
         final String userFullName = extras.getString("navUserName");
@@ -163,105 +261,6 @@ public class ReportActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        //Allowing Scroll for both ListView and ScrollView
-        NestedScrollView parentScroll = findViewById(R.id.parent_scroll);
-        final ListView mListView = findViewById(R.id.listView);
-        parentScroll.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event) {
-                findViewById(R.id.listView).getParent().getParent().requestDisallowInterceptTouchEvent(false);
-                return false;
-            }
-        });
-        mListView.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
-
-        //Click Transactions to return to top
-        TextView transactionTxt = findViewById(R.id.transactions_text);
-        transactionTxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListView.smoothScrollToPosition(0);
-            }
-        });
-
-
-        //Reading the data
-        readTestData();
-
-
-        //-----------------------------------------------------------------------------
-        // Graphing the data
-        LineChart reportChart = findViewById(R.id.main_linechart);
-
-        //reportChart.setOnChartGestureListener(ReportActivity.this);
-       // reportChart.setOnChartValueSelectedListener(ReportActivity.this);
-        reportChart.setDragEnabled(true);
-        reportChart.setScaleEnabled(false);
-
-        ArrayList<Entry> yValues = new ArrayList<>();
-
-        yValues.add(new Entry(0, 60f));
-        yValues.add(new Entry(1, 40f));
-        yValues.add(new Entry(2, 70f));
-        yValues.add(new Entry(3, 50f));
-        yValues.add(new Entry(4, 40f));
-        yValues.add(new Entry(5, 80f));
-        yValues.add(new Entry(6, 70f));
-
-        LineDataSet set1 = new LineDataSet(yValues, "Data Set 1");
-        set1.setColor(getResources().getColor(R.color.colorPrimary));
-        set1.setCircleColor(getResources().getColor(R.color.colorPrimary));
-        set1.setLineWidth(3f);
-        set1.setValueTextSize(15f);
-        set1.setValueTextColor(getResources().getColor(android.R.color.transparent));
-
-        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(set1);
-
-        LineData data = new LineData(dataSets);
-        reportChart.setViewPortOffsets(0,0,0,50);
-        reportChart.getAxisRight().setEnabled(false);
-
-        reportChart.getDescription().setEnabled(false);
-        reportChart.getLegend().setEnabled(false);
-
-        XAxis xAxis = reportChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawGridLines(false);
-        xAxis.setTextSize(12f);
-        xAxis.setSpaceMin(-0.5f);
-        xAxis.setSpaceMax(-0.5f);
-        xAxis.setGranularity(1f);
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(getXAxisValues()));
-        xAxis.setTextColor(getResources().getColor(R.color.blackTransparent));
-
-        YAxis yAxis = reportChart.getAxisLeft();
-        yAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
-        yAxis.setDrawAxisLine(false);
-        yAxis.setYOffset(-12f);
-        yAxis.setXOffset(20f);
-        yAxis.setTextSize(12f);
-        yAxis.setSpaceTop(20f);
-        yAxis.setSpaceBottom(20f);
-        xAxis.setGranularity(1f);
-        yAxis.setTextColor(getResources().getColor(R.color.blackTransparent));
-
-
-        reportChart.setData(data);
-        reportChart.notifyDataSetChanged();
-        reportChart.invalidate();
-
-
-        //----------------------------------------------------------------------------
-
-        ReportListAdapter adapter = new ReportListAdapter(this, R.layout.adapter_view_layout, reportSamples);
-        mListView.setAdapter(adapter);
     }
 
     protected ArrayList<ReportSample> reportSamples = new ArrayList<>();
@@ -318,8 +317,6 @@ public class ReportActivity extends AppCompatActivity {
             }
 
         }
-
-
 
     @Override
     public void onBackPressed() {

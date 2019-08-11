@@ -35,9 +35,11 @@ public class signInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signUpP2 = new Intent(signInActivity.this, MenuActivity.class);
-                finish();
-                startActivity(signUpP2);
+                Intent signIn = new Intent(signInActivity.this, MenuActivity.class);
+                //Sign In check
+                //REQUIRED USAGE: EDITTEXTS USED FOR SIGNIN (txtEmailInput txtPasswordInput)
+                startActivity(signIn);
+                finishAffinity();
             }
         });
 
@@ -49,9 +51,6 @@ public class signInActivity extends AppCompatActivity {
                 startActivity(signUp);
             }
         });
-
-        //REQUIRED USAGE: EDITTEXTS USED FOR SIGNIN (txtEmailInput txtPasswordInput)
-
 
     }
 }

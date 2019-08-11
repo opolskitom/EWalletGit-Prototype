@@ -67,7 +67,6 @@ public class signUpP3Activity extends AppCompatActivity {
                 }
 
                 Intent signUpP4Activity = new Intent(signUpP3Activity.this, signUpP4Activity.class);
-                finish();
                 startActivity(signUpP4Activity);
             }
         });

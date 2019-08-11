@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.cis436.ewalletprototype.R;
 
 //Page Creators/Modifiers: Thomas Opolski, ...
-//Initial start page, users will be directed here upon first launching the application
+//Initial start page, users will be directed here upon first launching the application and logging out
 
 public class StartingActivity extends AppCompatActivity {
     @Override

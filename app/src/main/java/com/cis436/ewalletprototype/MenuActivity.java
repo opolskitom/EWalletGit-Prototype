@@ -16,22 +16,21 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.cis436.ewalletprototype.Contact.ContactActivity;
-import com.cis436.ewalletprototype.P2P.P2PActivity;
-import com.cis436.ewalletprototype.Payment.MakePaymentActivity;
 import com.cis436.ewalletprototype.Report.ReportActivity;
-import com.cis436.ewalletprototype.SideBarItems.HelpActivity;
+import com.cis436.ewalletprototype.SideBarItems.Help.HelpActivity;
 import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
+import com.cis436.ewalletprototype.Team.TeamActivity;
+import com.cis436.ewalletprototype.onStartUp.StartingActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 //Page Creators/Modifiers: Thomas Opolski, ...
-//Main home menu page
+//Main home menu page, NECESSARY FOR DRAWER: PUTEXTRA username and number
+        // so there isn't repeated database calls and instead just one.
 //DataBase items: Full and First Name & Phone Number
 
 public class MenuActivity extends Activity {
@@ -151,8 +150,13 @@ public class MenuActivity extends Activity {
                         break;
 
                     case R.id.dm_logout:
+                        Intent logout = new Intent(MenuActivity.this, StartingActivity.class);
+                        drawer.closeDrawer(GravityCompat.START);
+                        finish();
+                        startActivity(logout);
 
                         //Logout of account
+
                         break;
                 }
                 return true;

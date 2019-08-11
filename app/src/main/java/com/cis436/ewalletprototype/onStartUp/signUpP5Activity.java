@@ -6,11 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.cis436.ewalletprototype.MenuActivity;
 import com.cis436.ewalletprototype.R;
-import com.cis436.ewalletprototype.TeamActivity;
 
 //Page Creators/Modifiers: Thomas Opolski, ...
 //Fifth Sign up page, asks for team creation now or later
@@ -58,13 +56,13 @@ public class signUpP5Activity extends AppCompatActivity {
 
                 if(createNowBtn.isSelected()) {
                     Intent menuActivity = new Intent(signUpP5Activity.this, MenuActivity.class);
-                    finish();
                     startActivity(menuActivity);
+                    finishAffinity();
                 }
                 else {
-                    Intent menuActivity = new Intent(signUpP5Activity.this, MenuActivity.class);
-                    finish();
+                    Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
                     startActivity(menuActivity);
+                    finishAffinity();
                 }
             }
         });

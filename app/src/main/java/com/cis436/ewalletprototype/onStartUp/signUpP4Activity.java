@@ -26,7 +26,6 @@ public class signUpP4Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent signUpP5Activity = new Intent(signUpP4Activity.this, signUpP5Activity.class);
-                finish();
                 startActivity(signUpP5Activity);
             }
         });

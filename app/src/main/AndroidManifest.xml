@@ -23,10 +23,14 @@
         <activity android:name=".CalendarActivity" />
         <activity android:name=".NotificationsActivity" />
         <activity android:name=".AccountsActivity" />
-        <activity android:name=".TeamActivity" />
+        <activity android:name=".Team.TeamActivity" />
+        <activity android:name=".Team.InvitesActivity" />
         <activity android:name=".SideBarItems.SettingsActivity" />
         <activity android:name=".SideBarItems.ProfileActivity" />
-        <activity android:name=".SideBarItems.HelpActivity" />
+        <activity android:name=".SideBarItems.Help.HelpActivity" />
+        <activity android:name=".SideBarItems.Help.FaqActivity" />
+        <activity android:name=".SideBarItems.Help.TermsActivity" />
+        <activity android:name=".SideBarItems.Help.PrivacyActivity" />
         <activity android:name=".onStartUp.StartingActivity"/>
         <activity android:name=".onStartUp.signInActivity"/>
         <activity android:name=".onStartUp.signUpActivity"/>

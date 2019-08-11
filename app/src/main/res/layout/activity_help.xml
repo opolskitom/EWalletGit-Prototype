@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout">
+    android:id="@+id/drawer_layout"
+    android:background="@color/colorWhite">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,15 +34,123 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Help"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:paddingTop="30dp"
             app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/view_header">
+
+            <RelativeLayout
+                android:id="@+id/view_card1"
+                android:layout_centerHorizontal="true"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:background="@drawable/background_grey_btn"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Frequently Asked Questions"
+                    android:textSize="15sp"
+                    android:layout_centerInParent="true"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:adjustViewBounds="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/help_faq_icon" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/view_card2"
+                android:layout_centerHorizontal="true"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:background="@drawable/background_grey_btn"
+                android:layout_marginTop="70dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terms and Conditions"
+                    android:textSize="15sp"
+                    android:layout_centerInParent="true"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:adjustViewBounds="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/help_tc_icon" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/view_card3"
+                android:layout_centerHorizontal="true"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:background="@drawable/background_grey_btn"
+                android:layout_marginTop="140dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy Notice"
+                    android:textSize="15sp"
+                    android:layout_centerInParent="true"
+                    />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:adjustViewBounds="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/help_pn_icon" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_header"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_header"
+            app:layout_constraintEnd_toEndOf="@+id/view_header"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/view_header"
+            app:layout_constraintTop_toTopOf="@+id/view_header"
+            app:layout_constraintVertical_bias="0.7" />
 
         <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
             android:id="@+id/bottom_bar"
