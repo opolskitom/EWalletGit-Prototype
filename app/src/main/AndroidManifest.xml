@@ -25,6 +25,9 @@
         <activity android:name=".AccountsActivity" />
         <activity android:name=".Team.TeamActivity" />
         <activity android:name=".Team.InvitesActivity" />
+        <activity android:name=".Team.CreateTeamActivity" />
+        <activity android:name=".Team.TeamProfileActivity" />
+        <activity android:name=".Team.TeamSettingsActivity" />
         <activity android:name=".SideBarItems.SettingsActivity" />
         <activity android:name=".SideBarItems.ProfileActivity" />
         <activity android:name=".SideBarItems.Help.HelpActivity" />

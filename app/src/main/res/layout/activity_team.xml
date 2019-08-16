@@ -114,6 +114,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/view_card_new"
                 android:layout_centerHorizontal="true"
                 android:layout_width="320dp"
                 android:layout_height="80dp"
@@ -123,12 +124,14 @@
                 >
 
                 <ImageView
+                    android:id="@+id/create_icon"
+                    android:contentDescription="Create"
                     android:layout_width="175dp"
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"
                     android:layout_centerInParent="true"
                     android:src="@drawable/add_with_circle"
-                    android:tint="@color/colorLightGrey"/>
+                    android:tint="@color/colorGrey"/>
 
             </RelativeLayout>
 

@@ -83,7 +83,7 @@
         app:layout_constraintVertical_bias="0.02" />
 
     <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/txtEmailAddressInput"
+        android:id="@+id/txtBirthDate"
         android:layout_width="330dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
@@ -106,7 +106,7 @@
         app:layout_constraintVertical_bias="0.175" />
 
     <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/txtPasswordInput"
+        android:id="@+id/txtHomeAddress"
         android:layout_width="330dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
@@ -118,7 +118,7 @@
         android:backgroundTint="@color/colorDimGrey"
         android:ems="20"
         android:hint="Home Address"
-        android:inputType="textPassword"
+        android:inputType="textPostalAddress"
         android:textColor="@color/colorDimGrey"
         android:textColorHint="@color/colorDimGrey"
         android:textSize="12sp"
@@ -164,7 +164,7 @@
         android:backgroundTint="@color/colorDimGrey"
         android:ems="20"
         android:hint="Zip Code"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textColor="@color/colorDimGrey"
         android:textColorHint="@color/colorDimGrey"
         android:textSize="12sp"
@@ -210,7 +210,7 @@
         android:backgroundTint="@color/colorDimGrey"
         android:ems="20"
         android:hint="Company Address"
-        android:inputType="textPersonName"
+        android:inputType="textPostalAddress"
         android:textColor="@color/colorDimGrey"
         android:textColorHint="@color/colorDimGrey"
         android:textSize="12sp"

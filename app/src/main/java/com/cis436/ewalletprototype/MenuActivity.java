@@ -152,8 +152,8 @@ public class MenuActivity extends Activity {
                     case R.id.dm_logout:
                         Intent logout = new Intent(MenuActivity.this, StartingActivity.class);
                         drawer.closeDrawer(GravityCompat.START);
-                        finish();
                         startActivity(logout);
+                        finishAffinity();
 
                         //Logout of account
 

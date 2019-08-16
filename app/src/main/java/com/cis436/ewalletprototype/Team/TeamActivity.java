@@ -1,7 +1,6 @@
 package com.cis436.ewalletprototype.Team;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,12 +8,15 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cis436.ewalletprototype.Contact.ContactActivity;
 import com.cis436.ewalletprototype.NotificationsActivity;
 import com.cis436.ewalletprototype.R;
 import com.cis436.ewalletprototype.Report.ReportActivity;
@@ -36,6 +38,58 @@ public class TeamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_team);
 
         //Toolbar back
+        setToolbar();
+
+        //Set navigation menus
+        setNavViews();
+
+        //Teams
+        boolean hasTeam = false;
+        RelativeLayout viewCard1 = findViewById(R.id.view_card1);
+
+        //If team is available
+        if (hasTeam) {
+            //Team 1
+            viewCard1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent teamProfile = new Intent(TeamActivity.this, TeamProfileActivity.class);
+                    startActivity(teamProfile);
+                }
+            });
+        }
+        else {
+            viewCard1.setEnabled(false);
+
+            RelativeLayout viewCardNew = findViewById(R.id.view_card_new);
+            //Move 100dp up to previous
+            float moveInDP = TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP, -100,
+                    TeamActivity.this.getResources().getDisplayMetrics() );
+            viewCardNew.setY(moveInDP);
+
+            viewCardNew.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent createTeam = new Intent(TeamActivity.this, CreateTeamActivity.class);
+                    startActivity(createTeam);
+                }
+            });
+        }
+
+        //Invitations
+        final ImageButton invitesBtn = findViewById(R.id.invites_btn);
+        invitesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent invites = new Intent(TeamActivity.this, InvitesActivity.class);
+                startActivity(invites);
+            }
+        });
+
+    }
+
+    private void setToolbar() {
+        //Toolbar back
         ImageButton btnBack = findViewById(R.id.tb_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +97,9 @@ public class TeamActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
 
+    private void setNavViews() {
         //Get user name and phone from prev activity
         Bundle extras = getIntent().getExtras();
         final String userFullName = extras.getString("navUserName");
@@ -68,6 +124,11 @@ public class TeamActivity extends AppCompatActivity {
                         break;
 
                     case R.id.contactAction:
+                        Intent contact = new Intent(TeamActivity.this, ContactActivity.class);
+                        finish();
+                        contact.putExtra("navUserName", userFullName);
+                        contact.putExtra("navPhoneNum", userPhoneNumber);
+                        startActivity(contact);
                         break;
 
                     case R.id.notificationsAction:
@@ -136,28 +197,6 @@ public class TeamActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        //Teams
-        RelativeLayout viewCard1 = findViewById(R.id.view_card1);
-        viewCard1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-        //Invitations
-        final ImageButton invitesBtn = findViewById(R.id.invites_btn);
-        invitesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent invites = new Intent(TeamActivity.this, InvitesActivity.class);
-                startActivity(invites);
-            }
-        });
-
-
 
     }
 

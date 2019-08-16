@@ -19,6 +19,7 @@ import com.cis436.ewalletprototype.Report.ReportActivity;
 import com.cis436.ewalletprototype.SideBarItems.Help.HelpActivity;
 import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
+import com.cis436.ewalletprototype.onStartUp.StartingActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
@@ -137,6 +138,10 @@ public class ContactActivity extends AppCompatActivity {
                         break;
 
                     case R.id.dm_logout:
+                        Intent logout = new Intent(ContactActivity.this, StartingActivity.class);
+                        drawer.closeDrawer(GravityCompat.START);
+                        startActivity(logout);
+                        finishAffinity();
 
                         //Logout of account
 

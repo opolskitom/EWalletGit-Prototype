@@ -23,6 +23,7 @@ import com.cis436.ewalletprototype.R;
 import com.cis436.ewalletprototype.SideBarItems.Help.HelpActivity;
 import com.cis436.ewalletprototype.SideBarItems.ProfileActivity;
 import com.cis436.ewalletprototype.SideBarItems.SettingsActivity;
+import com.cis436.ewalletprototype.onStartUp.StartingActivity;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -252,6 +253,10 @@ public class ReportActivity extends AppCompatActivity {
                         break;
 
                     case R.id.dm_logout:
+                        Intent logout = new Intent(ReportActivity.this, StartingActivity.class);
+                        drawer.closeDrawer(GravityCompat.START);
+                        startActivity(logout);
+                        finishAffinity();
 
                         //Logout of account
 

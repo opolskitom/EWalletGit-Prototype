@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:background="@color/colorWhite">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageButton
+            android:id="@+id/tb_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="20dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:background="@drawable/back_selector"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/create_team_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create a team!"
+        android:textColor="@color/colorPrimary"
+        android:textSize="22sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="30dp"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_team_txt"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="330dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_upload"
+        app:backgroundTint="@color/colorLightGrey" />
+
+
+    <RelativeLayout
+        android:id="@+id/main_relative_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_team_txt"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/comp_name_view1"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/button_grey">
+
+            <EditText
+                android:id="@+id/create_comp_name_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:hint="Company Name"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorDimGrey"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/comp_name_view2"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/comp_name_view1"
+            android:layout_marginTop="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/button_grey">
+
+            <EditText
+                android:id="@+id/create_comp_address_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:hint="Company Address"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/colorDimGrey"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/comp_name_view3"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/comp_name_view2"
+            android:layout_marginTop="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/button_grey">
+
+            <EditText
+                android:id="@+id/create_comp_num_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:hint="Company Contact Number"
+                android:inputType="phone"
+                android:textColor="@color/colorDimGrey"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/add_remove_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/comp_name_view3"
+            android:layout_marginTop="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="100dp"
+            android:text="Add or Remove Team Members"
+            android:textColor="@color/colorDimGrey" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/member_email_entry1"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/add_remove_txt"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/button_grey">
+
+            <EditText
+                android:id="@+id/add_member_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:background="@null"
+                android:hint="Teammate Email Address"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/colorDimGrey"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/add_member_view"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/member_email_entry1"
+            android:layout_marginTop="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/background_empty">
+
+            <ImageView
+                android:id="@+id/create_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Create"
+                android:src="@drawable/add_with_circle"
+                android:tint="@color/colorGrey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/invite_members_btn"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/add_member_view"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/button_grey"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:text="Invite Members"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/invite_members_btn"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/team_settings_btn"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button_blue"
+        android:text="Create Team"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
+
+</RelativeLayout>
