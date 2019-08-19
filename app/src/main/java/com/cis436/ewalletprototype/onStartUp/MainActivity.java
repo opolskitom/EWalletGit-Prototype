@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.cis436.ewalletprototype.Payment.MakePaymentActivity;
 import com.cis436.ewalletprototype.R;
 
 //Page Creators/Modifiers: Thomas Opolski, ...

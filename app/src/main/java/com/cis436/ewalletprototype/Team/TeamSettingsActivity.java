@@ -11,7 +11,7 @@ import com.cis436.ewalletprototype.R;
 
 
 //Page Creators/Modifiers: Thomas Opolski, ...
-//Help to FAQ Page
+//Team settings Page
 
 public class TeamSettingsActivity extends AppCompatActivity {
 

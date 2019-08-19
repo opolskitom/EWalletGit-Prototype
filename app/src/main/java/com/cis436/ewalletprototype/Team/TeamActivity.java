@@ -27,7 +27,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
 //Page Creators/Modifiers: Thomas Opolski, ...
-//Contact Page
+//Team Creation and selection
 
 public class TeamActivity extends AppCompatActivity {
     private DrawerLayout drawer;

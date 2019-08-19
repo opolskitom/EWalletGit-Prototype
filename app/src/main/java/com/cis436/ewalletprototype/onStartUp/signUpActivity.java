@@ -12,6 +12,9 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 import com.cis436.ewalletprototype.R;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 //Page Creators/Modifiers: Thomas Opolski, ...
 //Main Sign Up page, users are redirected here upon selection of account creation
 
@@ -36,18 +39,44 @@ public class signUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean valid = EmailValidator.getInstance().isValid(txtEmailInput.getText().toString()); //Validate Email
-                if (!txtPasswordInput.getText().toString().equals(txtPasswordReInput.getText().toString())) {valid = false;} //Validate Password
+
 
                 //If fields are valid, proceed, if not, create dialog
-                if (valid) {
-                    Intent signUpP2 = new Intent(signUpActivity.this, signUpP2Activity.class);
-                    startActivity(signUpP2);
+
+                // Validate Email
+                if (EmailValidator.getInstance().isValid(txtEmailInput.getText().toString().trim())) {
+
+                    //Validate Password Strength
+                    if (isValidPassword(txtPasswordInput.getText().toString().trim())) {
+
+                        //Validate Password Reenter
+                        if (txtPasswordInput.getText().toString().trim().equals(txtPasswordReInput.getText().toString().trim())) {
+                            Intent signUpP2 = new Intent(signUpActivity.this, signUpP2Activity.class);
+                            startActivity(signUpP2);
+                        } else {
+                            new AlertDialog.Builder(signUpActivity.this, R.style.alertDialog)
+                                    .setTitle("Incorrect Information!")
+                                    .setMessage("Your passwords do not match!")
+                                    .setNegativeButton(android.R.string.no, null)
+                                    .setIcon(R.drawable.ic_alert)
+                                    .show();
+                        }
+                    }
+                    //Incorrect Password Strength
+                    else {
+                        new AlertDialog.Builder(signUpActivity.this, R.style.alertDialog)
+                                .setTitle("Incorrect Information!")
+                                .setMessage("Passwords must be 6 characters, contain an upper and lower case letter, and a special character!")
+                                .setNegativeButton(android.R.string.no, null)
+                                .setIcon(R.drawable.ic_alert)
+                                .show();
+                    }
                 }
+                //Incorrect Email Pattern
                 else {
                     new AlertDialog.Builder(signUpActivity.this, R.style.alertDialog)
                             .setTitle("Incorrect Information!")
-                            .setMessage("Your e-mail address or password is incorrect!")
+                            .setMessage("Your e-mail address is incorrect!")
                             .setNegativeButton(android.R.string.no, null)
                             .setIcon(R.drawable.ic_alert)
                             .show();
@@ -66,8 +95,21 @@ public class signUpActivity extends AppCompatActivity {
 
 
         //REQUIRED USAGE: EDITTEXTS USED FOR SIGNUP (txtNameInput txtEmailInput txtPasswordInput txtPasswordReInput)
-            //After creation, redirecting to email verification
+        //After creation, redirecting to email verification
 
+    }
+
+    private boolean isValidPassword(final String password) {
+
+        Pattern pattern;
+        Matcher matcher;
+
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+='])(?=\\S+$).{6,}$";
+
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
     }
 
 }
